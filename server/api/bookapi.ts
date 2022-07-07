@@ -5,7 +5,7 @@ import * as url from "url";
 export default async (req: IncomingMessage, res: ServerResponse) => {
     const query = url.parse(req.url as string, true).query;
     let { bookQuery } = query;
-    let responseData = {};
+    let responseData = { data: [{ data: "" }] };
     
     if (bookQuery) {
         responseData = await axios.get(`http://localhost:3000/books?bookQuery=${bookQuery}`);
